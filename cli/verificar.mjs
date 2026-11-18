@@ -9,7 +9,7 @@ import { checkPdf } from "../docs/checker.js";
 const args = process.argv.slice(2);
 const csvIdx = args.indexOf("--csv");
 const csvPath = csvIdx >= 0 ? args[csvIdx + 1] : null;
-const files = args.filter((a, i) => a.endsWith(".pdf") && i !== csvIdx + 1);
+const files = args.filter((a, i) => a.toLowerCase().endsWith(".pdf") && !(csvIdx >= 0 && i === csvIdx + 1));
 
 const ICON = { ok: "✓", falha: "✗", alerta: "!", na: "·" };
 const ids = ["texto", "marcado", "idioma", "tituloDoc", "figuras", "tabelas", "titulos", "protecao"];
